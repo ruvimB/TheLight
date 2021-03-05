@@ -8,26 +8,45 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    var isLightOn:Bool = true
     
+    var isLightOn = 0
     override var prefersStatusBarHidden: Bool {
-        return true
-    }
+        return true    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-    }
-
-    fileprivate func updateUI() {
-        view.backgroundColor = isLightOn ? .white : .black
+        isLightOn += 1
     }
     
-    @IBAction func buttonPressed(_ sender: Any) {
-        isLightOn.toggle()
-        updateUI()
+    
+    
+    fileprivate func updateUI() {
+        
+        switch isLightOn {
+        case 1:
+            view.backgroundColor = .black
+        case 2:
+            view.backgroundColor = .blue
+        case 3:
+            view.backgroundColor = .gray
+        case 4:
+            view.backgroundColor = .green
+            isLightOn = 0
+        default:
+            break
+        }
+        
     }
+    
+
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(#line, #function, isLightOn)
+        updateUI()
+        isLightOn += 1
+    }
+    
     
 }
 
