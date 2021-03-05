@@ -25,12 +25,10 @@ class ViewController: UIViewController {
         
         switch isLightOn {
         case 1:
-            view.backgroundColor = .black
+            view.backgroundColor = .red
         case 2:
-            view.backgroundColor = .blue
+            view.backgroundColor = .yellow
         case 3:
-            view.backgroundColor = .gray
-        case 4:
             view.backgroundColor = .green
             isLightOn = 0
         default:
