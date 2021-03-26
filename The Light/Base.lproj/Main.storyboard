@@ -15,11 +15,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="flash" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="flash" translatesAutoresizingMaskIntoConstraints="NO" id="TNa-xQ-BhG">
+                                <rect key="frame" x="182.5" y="432.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="flash:" destination="BYZ-38-t0r" eventType="valueChanged" id="a6Y-mz-pri"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TNa-xQ-BhG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rds-dR-U5q"/>
+                            <constraint firstItem="TNa-xQ-BhG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="obp-dV-a4q"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" colorLabel="IBBuiltInLabel-Yellow" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-214.49275362318843" y="75"/>
         </scene>

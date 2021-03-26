@@ -6,45 +6,74 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
-    var isLightOn = 0
+
+    
+    var switchingBetweenColors = 0
+    
+    // Removing the status bar on the device
     override var prefersStatusBarHidden: Bool {
         return true    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        isLightOn += 1
+        switchingBetweenColors += 1
     }
     
     
-    
+    // Switching colors in the traffic light style
     fileprivate func updateUI() {
         
-        switch isLightOn {
+        switch switchingBetweenColors {
         case 1:
             view.backgroundColor = .red
         case 2:
             view.backgroundColor = .yellow
         case 3:
             view.backgroundColor = .green
-            isLightOn = 0
+        case 4:
+            view.backgroundColor = .white
+        case 5:
+            view.backgroundColor = .black
+            switchingBetweenColors = 0
         default:
             break
         }
         
     }
     
+    // Turning on the flashlight on the device
+    func toggleTorch(on: Bool) {
+        guard
+            let device = AVCaptureDevice.default(for: AVMediaType.video),
+            device.hasTorch
+        
+        else { return }
 
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(#line, #function, isLightOn)
-        updateUI()
-        isLightOn += 1
+        do {
+            try device.lockForConfiguration()
+            device.torchMode = on ? .on : .off
+            device.unlockForConfiguration()
+
+        } catch {
+            print("Torch could not be used")
+        }
     }
     
+
+    // Turning on the flashlight switch
+    @IBAction func flash(_ sender: UISwitch) {
+        toggleTorch(on: sender.isOn )
+    }
     
+    // Processing screen clicks
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        updateUI()
+        switchingBetweenColors += 1
+    }
 }
 
